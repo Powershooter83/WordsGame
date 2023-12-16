@@ -92,4 +92,15 @@ public class Utils
                 return 1;
         }
     }
+    
+    public static bool IsWithinTimeSpan(DateTime start, DateTime end, TimeSpan timeSpan)
+    {
+        var upperBound = start + timeSpan;
+        return end >= start && end <= upperBound;
+    }
+
+    public static int CalculatePointsWithTime(TimeSpan timeSpan, double timeAsSeconds , int points)
+    {
+        return Convert.ToInt32(Math.Round(points * (timeSpan.TotalSeconds - timeAsSeconds) / timeSpan.TotalSeconds));
+    }
 }

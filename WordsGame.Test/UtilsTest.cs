@@ -76,5 +76,42 @@ public class UtilsTest
         Assert.Equal(expectedPoints, actual);
     }
     
+    [Fact]
+    public void IsWithinTimeSpan_WhenTimesAreWithinTimeSpanThenReturnTrue()
+    {
+        var start = new DateTime(2023, 1, 1, 12, 0, 0);
+        var end = new DateTime(2023, 1, 1, 12, 10, 0);
+        var timeSpan = new TimeSpan(0, 0, 10, 0);
+
+        var actual = Utils.IsWithinTimeSpan(start, end, timeSpan);
+
+        Assert.True(actual);
+    }
+    
+    [Fact]
+    public void IsWithinTimeSpan_WhenTimesAreMotWithinTimeSpanThenReturnFalse()
+    {
+        var start = new DateTime(2023, 1, 1, 12, 0, 0);
+        var end = new DateTime(2023, 1, 1, 12, 11, 0);
+        var timeSpan = new TimeSpan(0, 0, 10, 0);
+
+        var actual = Utils.IsWithinTimeSpan(start, end, timeSpan);
+
+        Assert.False(actual);
+    }
+
+    [Fact]
+    public void CalculatePointsWithTime()
+    {
+        const int points = 7;
+        
+        var timeSpan = new TimeSpan(0, 0, 0, 60);
+        const double time = 22.1;
+
+        var actual = Utils.CalculatePointsWithTime(timeSpan, time, points);
+        
+        Assert.Equal(4, actual);
+        
+    }
     
 }
