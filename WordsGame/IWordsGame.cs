@@ -15,4 +15,12 @@ public interface IWordsGame
     /// <param name="solution">the submitted solution</param>
     /// <returns>the number of points awarded</returns>
     public int Grade(string solution);
+    
+    
+    /// <summary>
+    /// Grades the solution of the word game based on a special algorithm.
+    /// </summary>
+    /// <param name="solution">the submitted solution</param>
+    /// <returns>the number of points awarded</returns>
+    public int GradeWithScrabbleMode(string solution);
 }
